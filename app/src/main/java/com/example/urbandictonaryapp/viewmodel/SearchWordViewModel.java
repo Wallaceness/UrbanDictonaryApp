@@ -24,6 +24,7 @@ public class SearchWordViewModel extends AndroidViewModel {
 
     private MutableLiveData<List<Definition>> definitions = new MutableLiveData<>();
     private MutableLiveData<Boolean> showProgressBar = new MutableLiveData<>();
+    private MutableLiveData<String> errors = new MutableLiveData<>();
 
     private Repository repo = Repository.getInstance();
     private CompositeDisposable disposable = new CompositeDisposable();
@@ -51,7 +52,7 @@ public class SearchWordViewModel extends AndroidViewModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        // Something went wrong
+                        errors.setValue(e.getMessage());
                     }
 
                     @Override
@@ -102,6 +103,8 @@ public class SearchWordViewModel extends AndroidViewModel {
     public LiveData<Boolean> getShowProgressBar() {
         return showProgressBar;
     }
+
+    public LiveData<String> getErrors(){return errors;}
 
     @Override
     protected void onCleared() {

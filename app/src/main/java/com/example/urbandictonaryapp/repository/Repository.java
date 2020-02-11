@@ -19,6 +19,6 @@ public class Repository {
     }
 
     public Observable<UrbanResponse> getDefinitions(String term) {
-        return ServiceInstance.getUrbanService().getDefinitions(term);
+        return ServiceInstance.getUrbanService().getDefinitions(term, Constants.getApiHost(),Constants.getApiKey());
     }
 }
