@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/definitionLayout"
+    android:id="@+id/definitionLayout2"
     android:layout_margin="20dp"
     android:background="#ffffff"
     android:padding="10dp">
@@ -14,33 +14,33 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/definitionHeader"
+        android:id="@+id/definitionHeader2"
         android:textStyle="bold"
         android:textSize="14pt" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/audioButton"
+        android:id="@+id/audioButton2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/definitionText"
-        app:layout_constraintStart_toEndOf="@id/definitionHeader"
+        app:layout_constraintBottom_toTopOf="@id/definitionText2"
+        app:layout_constraintStart_toEndOf="@id/definitionHeader2"
         android:text="@string/audio"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/definitionHeader"
-        android:id="@+id/definitionText"/>
+        app:layout_constraintTop_toBottomOf="@id/definitionHeader2"
+        android:id="@+id/definitionText2"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/definitionExample"
+        android:id="@+id/definitionExample2"
         android:textStyle="italic"
-        app:layout_constraintTop_toBottomOf="@id/definitionText" />
+        app:layout_constraintTop_toBottomOf="@id/definitionText2" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/authorDate"
+        android:id="@+id/authorDate2"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/definitionExample" />
+        app:layout_constraintTop_toBottomOf="@id/definitionExample2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

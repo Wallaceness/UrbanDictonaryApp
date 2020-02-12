@@ -1,6 +1,9 @@
 package com.example.urbandictonaryapp.view.searchwordfragment;
 
 
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -37,7 +40,8 @@ public class SearchWordFragment extends BaseFragment {
     private MainActivity activity;
     private RecyclerView recycler;
     private ArrayList<Definition> definitionList=new ArrayList<>();
-    DefinitionAdapter adapter;
+    private DefinitionAdapter adapter;
+    private MediaPlayer audio;
 
     public SearchWordFragment() {
         // Required empty public constructor
@@ -53,6 +57,8 @@ public class SearchWordFragment extends BaseFragment {
         searchButton = rootView.findViewById(R.id.searchButton2);
         activity = (MainActivity) getActivity();
         recycler = rootView.findViewById(R.id.recycleGrid);
+//        audio = MediaPlayer.create(getContext());
+//        audio.setAudioAttributes(new AudioAttributes.Builder().build());
 
         viewModel = new ViewModelProvider.AndroidViewModelFactory(activity.getApplication()).create(SearchWordViewModel.class);
         setUpObservers();
