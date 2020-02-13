@@ -20,7 +20,7 @@
     <Button android:layout_height="wrap_content"
         android:layout_width="0dp"
         android:id="@+id/searchButton2"
-        android:background="@drawable/search_foreground"
+        android:background="@drawable/ic_search_black_24dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/recycleGrid"
         app:layout_constraintStart_toEndOf="@id/guide2"
