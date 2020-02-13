@@ -1,6 +1,5 @@
 package com.example.urbandictonaryapp.view.searchwordfragment;
 
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -15,11 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.urbandictonaryapp.R;
 import com.example.urbandictonaryapp.model.Definition;
 
-import java.sql.Time;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class DefinitionAdapter extends RecyclerView.Adapter<DefinitionAdapter.DefinitionHolder> {
@@ -56,9 +55,7 @@ public class DefinitionAdapter extends RecyclerView.Adapter<DefinitionAdapter.De
             throw new Error(e);
         }
         holder.author.setText("by "+def.getAuthor()+" "+holder.time.format(dateTime));
-        if (def.getSoundUrls().size()>0){
-            holder.url = def.getSoundUrls().get(0);
-        }
+        holder.audioUrls = def.getSoundUrls();
     }
 
     @Override
@@ -73,9 +70,10 @@ public class DefinitionAdapter extends RecyclerView.Adapter<DefinitionAdapter.De
         TextView example;
         TextView author;
         Button button;
-        MediaPlayer audio;
-        String url;
+        List<String> audioUrls;
         SimpleDateFormat time=new SimpleDateFormat("MM-dd-YY", Locale.US);
+        MediaPlayer audio;
+        int index=0;
 
         DefinitionHolder(@NonNull View itemView) {
             super(itemView);
@@ -83,24 +81,38 @@ public class DefinitionAdapter extends RecyclerView.Adapter<DefinitionAdapter.De
             definition = itemView.findViewById(R.id.definitionText);
             example = itemView.findViewById(R.id.definitionExample);
             author = itemView.findViewById(R.id.authorDate);
-            audio= new MediaPlayer();
-            audio.setAudioStreamType(AudioManager.STREAM_MUSIC);
             button = itemView.findViewById(R.id.audioButton);
 
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    try{
-                        audio.setDataSource(url);
-                    }
-                    catch (Exception e){
-                        System.out.println(e.getMessage());
-                    }
-                    if (audio.isPlaying()){
-                        audio.start();
+                    if (audioUrls!=null){
+                        try{
+                            playAudio(audioUrls.get(index));
+                        }
+                        catch(Exception e){
+                            System.out.println("MEDIAPLAYER FAILED!!");
+                            System.out.println(e.getMessage());
+                        }
                     }
                 }
             });
+        }
+
+        public void playAudio(String url) throws IOException {
+
+            MediaPlayer a = new MediaPlayer();
+            a.setDataSource(url);
+            a.prepare();
+            a.start();
+            index+=1;
+            if (index>audioUrls.size()-1){
+                index=0;
+            }
+
+            //another way to do it.
+            //audio = MediaPlayer.create(itemView.getContext(), Uri.parse(url));
+            //audio.start();
         }
     }
 }

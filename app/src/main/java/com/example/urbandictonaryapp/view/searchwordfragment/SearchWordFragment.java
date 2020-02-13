@@ -41,7 +41,6 @@ public class SearchWordFragment extends BaseFragment {
     private RecyclerView recycler;
     private ArrayList<Definition> definitionList=new ArrayList<>();
     private DefinitionAdapter adapter;
-    private MediaPlayer audio;
 
     public SearchWordFragment() {
         // Required empty public constructor

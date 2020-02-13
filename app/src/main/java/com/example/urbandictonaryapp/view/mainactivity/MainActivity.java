@@ -3,13 +3,16 @@ package com.example.urbandictonaryapp.view.mainactivity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.example.urbandictonaryapp.R;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
     private NavHostFragment navHost;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,4 +24,5 @@ public class MainActivity extends AppCompatActivity {
     public void navigate(int id){
         NavHostFragment.findNavController(navHost).navigate(id);
     }
+
 }
